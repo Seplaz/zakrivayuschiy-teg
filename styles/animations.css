@@ -13,7 +13,7 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 
-@keyframes arrow {
+@keyframes slideArrow {
   from {
     inset-inline-start: -20px;
   }
@@ -23,7 +23,7 @@
   }
 }
 
-@keyframes sparks {
+@keyframes sparkleFade {
   from {
       opacity: 0;
   }
@@ -37,53 +37,33 @@
   }
 }
 
-@keyframes heartSize {
+@keyframes pulseHeart {
   from {
-      scale: 1;
+      transform: scale(1);
   }
 
   50% {
-      scale: 1.1;
+    transform: scale(1.1);
   }
 
   to {
-      scale: 1;
+    transform: scale(1);
   }
 }
 
-.button__like-icon {
-  display: flex;
-  align-items: center;
-  border: none;
-  outline: none;
-  outline-offset: -2px;
-  background-color: transparent;
-  transition: outline 0.3s ease;
-  cursor: pointer;
-}
-
-.button__like-icon:focus {
-  outline: none;
-}
-
-.button__like-icon:focus-visible {
-  outline: 2px solid var(--accent-color);
-  transition: outline 0.3s ease;
-}
-
 .contour {
-  --core-color: var(--accent-color);
+  --core-color: var(--accent-color, #000);
   transition: fill 0.1s linear;
 }
 
 .main-body {
-  --core-color: var(--accent-color);
+  --core-color: var(--accent-color, #000);
   opacity: 0;
   transition: opacity 0.3s linear;
 }
 
 .core {
-  --core-color: var(--accent-color);
+  --core-color: var(--accent-color, #000);
   opacity: 0;
   transition: opacity 0.3s 0.03s linear;
 }
@@ -93,13 +73,13 @@
 }
 
 .like-icon:hover .core {
-  --core-color: var(--accent-color);
+  --core-color: var(--accent-color, #000);
   opacity: 1;
   transition: opacity 0.3s linear;
 }
 
 .like-icon:hover .main-body {
-  --core-color: var(--accent-color);
+  --core-color: var(--accent-color, #000);
   opacity: 1;
   transition: opacity 0.3s 0.05s linear;
 }
@@ -136,11 +116,11 @@
 
 .like-icon.is-liked .sparks {
   --contour-color: #ff0000;
-  animation: sparks 0.3s 0.3s none ease-in alternate;
+  animation: sparkleFade 0.3s 0.3s none ease-in alternate;
 }
 
 
 .like-icon.is-liked .heart {
   transform-origin: center;
-  animation: heartSize 0.3s 0.1s none ease-in alternate;
+  animation: pulseHeart 0.3s 0.1s none ease-in alternate;
 }
