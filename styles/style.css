@@ -271,17 +271,17 @@
   position: absolute;
   display: block;
   background-color: var(--background-color-difference, #000);
-  transition: inline-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  transition: inline-size 0.5s ease-in-out;
   transform-origin: left center;
   inset-block-end: 0;
   inset-inline-start: 0;
   inline-size: 0%;
   block-size: 100%;
+  mix-blend-mode: difference;
 }
 
 .button:hover::after {
   inline-size: 100%;
-  mix-blend-mode: difference;
 }
 
 .button:hover {
