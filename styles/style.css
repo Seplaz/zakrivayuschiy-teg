@@ -20,7 +20,9 @@
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
   background-color: var(--background-color, #fff);
-  background-image: var(--background-image);
+  background-image: var(--background-image, repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+                                            repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+                                            linear-gradient(rgba(231, 231, 231, 1) 0.01%, rgba(26, 26, 26, 1)));
   background-size: cover;
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -29,7 +31,9 @@
 
 .section-wrapper {
   margin: 0 auto;
-  inline-size: var(--content-width, clamp(23.4375rem, 0rem + 48.5%, 90rem));
+  inline-size: var(--content-width, clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem));
+  min-inline-size: 375px;
+  max-inline-size: 700px;
 }
 
 .header {
@@ -176,7 +180,8 @@
 .card__content-image {
   object-fit: cover;
   object-position: center;
-  inline-size: 100%;
+  inline-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
+  aspect-ratio: 1 / 1;
 }
 
 .filter_saturate-brightness {
@@ -248,6 +253,7 @@
   position: relative;
   z-index: 1;
   inline-size: 21px;
+  block-size: 21px;
   mix-blend-mode: difference;
 }
 
@@ -265,17 +271,17 @@
   position: absolute;
   display: block;
   background-color: var(--background-color-difference, #000);
-  transition: inline-size 0.5s ease-in-out, background-color 0.5s ease-in-out, mix-blend-mode 0.5s ease-in-out;
+  transition: inline-size 0.5s ease-in-out, background-color 0.5s ease-in-out;
   transform-origin: left center;
-  inset-block-start: 0;
+  inset-block-end: 0;
   inset-inline-start: 0;
   inline-size: 0%;
   block-size: 100%;
 }
 
 .button:hover::after {
-  background-color: var(--background-color-difference, #000);
   inline-size: 100%;
+  mix-blend-mode: difference;
 }
 
 .button:hover {
@@ -322,7 +328,7 @@
   padding: 30px 40px;
   background-color: var(--background-color, #fff);
   transition: opacity 0.3s ease-in-out;
-  inline-size: clamp(21.3125rem, 20.9604rem + 1.5023vw, 22.3125rem);
+  inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
 }
 
 .content__dialog:not([open]) {
@@ -352,12 +358,13 @@
   margin-block-end: 30px;
 }
 
-.content__form-icon-text .button__image {
+.form__button-image {
   position: relative;
   z-index: 1;
   margin: 0;
   fill: currentColor;
   inline-size: 39px;
+  block-size: 39px;
   mix-blend-mode: difference;
 }
 
@@ -370,47 +377,8 @@
 }
 
 .content__dialog-button {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid var(--accent-color, #000);
   padding: 12.5px clamp(7.15625rem, 6.7601rem + 1.6901vw, 8.28125rem);
-  color: var(--text-color-difference, #fff);
-  background-color: var(--background-color, #fff);
   inline-size: clamp(16.0625rem, 15.2702rem + 3.3803vw, 18.3125rem);
-}
-
-.content__dialog-button:focus {
-  outline: none;
-}
-
-.content__dialog-button:focus-visible {
-  box-shadow: 2px 2px 0 0 var(--accent-color, #fff);
-  transition: box-shadow 0.3s ease;
-}
-
-.content__dialog-button:hover {
-  color: var(--text-color-difference, #fff);
-  transition: color 1s ease;
-  cursor: pointer;
-}
-
-.content__dialog-button::after {
-  content: '';
-  position: absolute;
-  background-color: var(--background-color-difference, #000);
-  transition: inline-size 0.5s ease-in-out, background-color 0.5s ease-in-out, mix-blend-mode 0.5s ease-in-out;
-  transform-origin: left center;
-  inset-inline-start: 0;
-  inset-block-end: 0;
-  inline-size: 0;
-  block-size: 100%;
-}
-
-.content__dialog-button:hover::after {
-  transform: inline-size 0.5s ease;
-  inline-size: 100%;
 }
 
 .button__text-dialog {
@@ -437,10 +405,5 @@
 
   .button__image {
     inline-size: 28px;
-  }
-
-  .content__form-icon-text .button__image {
-    inline-size: 39px;
-    block-size: 39;
   }
 }
